@@ -1,0 +1,60 @@
+specVersion: 0.0.4
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DNSNFTMarketplace
+    network: matic
+    source:
+      address: "0x07B74b2A56DCE721d5128c137FB1CE6Bc4a98918"
+      abi: DNSNFTMarketplace
+      startBlock: 34820217
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - AuctionMade
+        - BidCancelled
+        - BidClaimed
+        - BidMade
+        - ChangedFeePercentages
+        - ChangedMarketplaceFeeWallet
+        - ChangedWordsNFTAddress
+        - Claimed
+        - ClaimedAndNoBidsMade
+        - ERC721Received
+        - Expired
+        - ExpiredAndNoBidsMade
+        - OwnershipTransferred
+      abis:
+        - name: DNSNFTMarketplace
+          file: DNSNFTMarketplace\abis\DNSNFTMarketplace.json
+      eventHandlers:
+        - event: AuctionMade(indexed address,uint256,uint256,uint256)
+          handler: handleAuctionMade
+        - event: BidCancelled(indexed address,uint256,uint256)
+          handler: handleBidCancelled
+        - event: BidClaimed(indexed address,uint256,uint256,uint256)
+          handler: handleBidClaimed
+        - event: BidMade(indexed address,uint256,uint256,uint256)
+          handler: handleBidMade
+        - event: ChangedFeePercentages(uint8,uint8)
+          handler: handleChangedFeePercentages
+        - event: ChangedMarketplaceFeeWallet(indexed address)
+          handler: handleChangedMarketplaceFeeWallet
+        - event: ChangedWordsNFTAddress(indexed address)
+          handler: handleChangedWordsNFTAddress
+        - event: Claimed(indexed address,indexed address,uint256,uint256)
+          handler: handleClaimed
+        - event: ClaimedAndNoBidsMade(indexed address,uint256)
+          handler: handleClaimedAndNoBidsMade
+        - event: ERC721Received(indexed address,indexed address,uint256,bytes)
+          handler: handleERC721Received
+        - event: Expired(indexed address,indexed address,uint256,uint256)
+          handler: handleExpired
+        - event: ExpiredAndNoBidsMade(indexed address,uint256)
+          handler: handleExpiredAndNoBidsMade
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: DNSNFTMarketplace\DNSNFTMarketplace.wasm

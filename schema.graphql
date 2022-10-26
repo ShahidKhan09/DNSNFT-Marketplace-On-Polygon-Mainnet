@@ -1,0 +1,88 @@
+type AuctionMade @entity {
+  id: ID!
+  _minter: Bytes! # address
+  _mintTime: BigInt! # uint256
+  _initialExpiryTime: BigInt! # uint256
+  _tokenId : BigInt! # uint256
+}
+
+type BidCancelled @entity {
+  id: ID!
+  _bidder: Bytes! # address
+  _amount: BigInt! # uint256
+  _tokenId: BigInt! # uint256
+}
+
+type BidClaimed @entity {
+  id: ID!
+  _bidder: Bytes! # address
+  _amount: BigInt! # uint256
+  _tokenId: BigInt! # uint256
+  _totalBalance: BigInt! # uint256
+}
+
+type BidMade @entity {
+  id: ID!
+  _bidder: Bytes! # address
+  _amount: BigInt! # uint256
+  _tokenId: BigInt! # uint256
+  _totalBalance: BigInt! # uint256
+}
+
+type ChangedFeePercentages @entity {
+  id: ID!
+  _marketplacePercentage: Int! # uint256
+  _minterPercentage: Int! # uint256
+}
+
+type ChangedMarketplaceFeeWallet @entity {
+  id: ID!
+  _marketplaceFeeWallet: Bytes! # address
+}
+
+type ChangedWordsNFTAddress @entity {
+  id: ID!
+  _wordsNFTAddress: Bytes! # address
+}
+
+type Claimed @entity {
+  id: ID!
+  _bidder: Bytes! # address
+  _minter: Bytes! # address
+  _amount: BigInt! # uint256
+  _tokenId: BigInt! # uint256
+}
+
+type ClaimedAndNoBidsMade @entity {
+  id: ID!
+  _minter: Bytes! # address
+  _tokenId: BigInt! # uint256
+}
+
+type ERC721Received @entity {
+  id: ID!
+  _operator: Bytes! # address
+  _to: Bytes! # address
+  _tokenId: BigInt! # uint256
+  data: Bytes! # address
+}
+
+type Expired @entity {
+  id: ID!
+  _bidder: Bytes! # address
+  _minter: Bytes! # address
+  _amount: BigInt! # uint256
+  _tokenId: BigInt! # uint256
+}
+
+type ExpiredAndNoBidsMade @entity {
+  id: ID!
+  _minter: Bytes! # address
+  _tokenId: BigInt! # uint256
+}
+
+type OwnershipTransferred @entity {
+  id: ID!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
